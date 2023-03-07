@@ -2,11 +2,22 @@
 A helpful webapp that takes in a youtube video url and outputs a detailed summary with highlights and timestamps included.
 
 # To run:
-1. go to root directory
-2. run `yarn install`
-3. run `node chatgpt.js`
+1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
+2. create an 'openai-api-key.js' file in the root directory and paste your key in the following format
+```javascript
+const OPENAI_API_KEY = "{YOUR_KEY_HERE}";
+export { OPENAI_API_KEY };
+```
+3. go to root directory
+4. run `yarn install`
+5. run `node chatgpt.js`
 
 # Development Logs
+
+## References and documentation
+1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
+2. Also check out open-ai's official [documentation](https://platform.openai.com/docs/api-reference/introduction) for help.
+3. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
 
 ## Workflow
 
