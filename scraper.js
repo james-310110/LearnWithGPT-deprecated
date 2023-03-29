@@ -21,6 +21,7 @@ async function fetchTranscriptUrl(videoUrl) {
       throw new Error("Failed to find the transcript URL");
     }
     const transcriptUrl = match[1].replace(/\\u0026/g, "&");
+    console.log(transcriptUrl);
     return transcriptUrl;
   } catch (error) {
     console.log(

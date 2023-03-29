@@ -12,6 +12,9 @@ export { OPENAI_API_KEY };
 4. run `yarn install`
 5. run `node chatgpt.js`
 
+## To run server
+1. run `conda env create -f env.yml` to install python environment and dependencies
+
 # Development Logs
 
 ## References and documentation

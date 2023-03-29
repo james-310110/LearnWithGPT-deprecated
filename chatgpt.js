@@ -1,10 +1,10 @@
 import { ChatGPTAPI } from "chatgpt";
-import { OPENAI_API_KEY } from "./openai-api-key.js";
+import OPENAI_API_KEY from "./openai-api-key.json" assert { type: "json" };
 import { getTranscriptFromYoutube } from "./scraper.js";
 
 async function initializeAPI() {
   const api = new ChatGPTAPI({
-    apiKey: OPENAI_API_KEY,
+    apiKey: OPENAI_API_KEY["openai-api-key"],
     completionParams: {
       temperature: 0.25,
       max_tokens: 2048,
@@ -31,6 +31,7 @@ async function main() {
   //     JSON.stringify(transcript)
   // );
   // console.log(resp.text);
+  console.time("execution time");
   const api = await initializeAPI();
   const videoUrl = "https://www.youtube.com/watch?v=RYDiDpW2VkM";
   const transcript = await getTranscriptFromYoutube(videoUrl);
@@ -38,9 +39,14 @@ async function main() {
     "Generate a bulelted list of summaries with timestamps for the transcript I'm going to send you."
   );
   // send a message and wait for the response
-  let res = await api.sendMessage(JSON.stringify(transcript).slice(0, 4086), {
-    parentMessageId: instruction.id,
-  });
+  let res = await api.sendMessage(
+    JSON.stringify(transcript).slice(0, 2048 * 3),
+    {
+      parentMessageId: instruction.id,
+    }
+  );
   console.log(res.text);
+  console.timeEnd("execution time");
 }
+
 main();
