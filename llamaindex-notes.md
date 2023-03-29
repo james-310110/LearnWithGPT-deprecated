@@ -1,14 +1,19 @@
-
 ## Steps
+
 ### Set-up
+
 - run `conda env create -f env.yml` to install python environment and dependencies
 - import `llamaindex` into your python script
+
 ### Building Index
+
 ```python
 documents = SimpleDirectoryReader('data').load_data()
 index = GPTSimpleVectorIndex.from_documents(documents)
 ```
+
 ### Querying Index
+
 ```python
 response = index.query("<query>", response_mode="<mode>")
 ```
@@ -16,11 +21,13 @@ response = index.query("<query>", response_mode="<mode>")
 ## [Examples](https://github.com/jerryjliu/llama_index/tree/main/examples)
 
 ### [Data connectors](https://gpt-index.readthedocs.io/en/latest/how_to/data_connectors.html)
+
 - local file directory: `SimpleDirectoryReader`
 - Google Docs: `GoogleDocsReader`
 - else: `NotionPageReader`, `SlackReader`, `DiscordReader`
 - [community data connectors](https://llamahub.ai)
 - example
+
 ```python
 from llama_index import GPTSimpleVectorIndex, download_loader
 GoogleDocsReader = download_loader('GoogleDocsReader')
@@ -32,6 +39,7 @@ index.query('Where did the author go to school?')
 ```
 
 ### [Index Structures](https://gpt-index.readthedocs.io/en/latest/guides/primer/index_guide.html)
+
 - index is a sequence of nodes where each node is a chunk of text from documents
 - `.query` loads all or parts of nodes into Response Synthesis module
 - types of index
@@ -64,11 +72,10 @@ index.query('Where did the author go to school?')
   - [query a graph recursively top down](https://gpt-index.readthedocs.io/en/latest/reference/indices/composability_query.html)
 
 ### [Query Interface](https://gpt-index.readthedocs.io/en/latest/guides/primer/usage_pattern.html#load-in-documents)
+
 - to continue...
 
-
-
-
 # TODOs
+
 - [ ] setting response mode
 - [ ] query a graph top down
