@@ -3,10 +3,9 @@ A helpful webapp that takes in a youtube video url and outputs a detailed summar
 
 # To run:
 1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
-2. create an 'openai-api-key.js' file in the root directory and paste your key in the following format
-```javascript
-const OPENAI_API_KEY = "{YOUR_KEY_HERE}";
-export { OPENAI_API_KEY };
+2. create an 'openai-api-key.json' file in the root directory and paste your key in the following format
+```json
+{"openai-api-key": "<your_key_here>"}
 ```
 3. go to root directory
 4. run `yarn install`
