@@ -1,66 +1,3 @@
-# LearnWithGPT
-A helpful webapp that inputs web links or local files, paired with user query, and outputs a detailed summary with structures and references.
-
-# On this repository
-### To run:
-1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
-2. create an 'openai-api-key.json' file in the root directory and paste your key in the following format
-```json
-{"openai-api-key": "<your_key_here>"}
-```
-3. go to root directory
-4. run `yarn install`
-5. run `node chatgpt.js`
-6. run `conda env create -f env.yml` to install python environment and dependencies
-
-### To develop:
-1. after pulling from main branch, run `git checkout -b new-branch-name`
-2. to push your changes, run `git push origin <your-branch-name>`, note that  if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
-
-### Development Logs
-
-### JavaScript Code Base
-1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
-2. Also check out open-ai's official [documentation](https://platform.openai.com/docs/api-reference/introduction) for help.
-3. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
-4. ChatGPT is able to reference up to 3000words/4000tokens from the current conversation, according to [Raf](https://help.openai.com/en/articles/6787051-does-chatgpt-remember-what-happened-earlier-in-the-conversation). However [u/kmdr](https://www.reddit.com/r/ChatGPT/comments/zz36n5/an_experiment_on_chatgpts_memory/) also pointed out that this cap is not strict. By reseeding basic information, ChatGPT is able to recall data 10,000 words before.
-5. Any single message sent to ChatGPT is capped at 6144characters, according to testing.
-
-### JavaScript Code Workflow
-1. Fetch transcript from youtube url in scraper.js
-2. Prep chatgpt so that we can send multiple messages containing parts of the transcript
-3. Send transcript blocks to chatgpt
-4. Instruct chatgpt to generate a summary based on the instructed goals and formats
-5. Log the summary in console
-
-### Python Code Base
-1. Currently using [LlamaIndex](https://github.com/jerryjliu/llama_index) for data augmentation
-2. Data augmentation currently in exploration, see relevant code in `server` directory
-
-### Python Code Workflow
-1. parse user input files or links into data loaders
-2. dependent on user input, build list index, tree index, or graph index
-3. dependent on user input, build HyDE, single-step or multi-step query
-4. build input2output pipeline
-5. build simple frontend interface using [streamlit](https://streamlit.io/)
-
-# TODOs
-- more important and urgent
-	- [ ] learn **Customization**
-	- [ ] understand [**vector stores**](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
-- less important and urgent
-	- [ ] learn **Examples for POC/MVP**
-	- [ ] checkout existing [**webapps**](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
-- less important and urgent
-	- [ ] find resources on **prompt engineering** for structured output
-	- [ ] learn **prompt engineering** for structured output
-	- [ ] figure out a way to **benchmark/compare** structured output
-	- [ ] study **pdf reader** and find out if figures and tables can be accurately read
-- less important and not urgent
-	- [ ] learn **Analysis and Optimization**
-	- [ ] learn **Integrations**
-
-# ***Notes on LlamaIndex Below***
 # Starter Tutorials
 ### Set-up
 - run `conda env create -f env.yml` to install python environment and dependencies
@@ -338,3 +275,19 @@ response = index.query("<query>", response_mode="<mode>")
 - [How to augment with SEC Filings](https://medium.com/@jerryjliu98/how-unstructured-and-llamaindex-can-help-bring-the-power-of-llms-to-your-own-data-3657d063e30d)https://medium.com/@jerryjliu98/how-unstructured-and-llamaindex-can-help-bring-the-power-of-llms-to-your-own-data-3657d063e30d
 - [**Example Notebooks**](https://github.com/jerryjliu/llama_index/tree/main/examples)
 - [**Example WebApps**](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html)
+
+# TODOs
+- more important and urgent
+	- [ ] learn [[#Customization]]
+	- [ ] understand [vector stores](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
+- less important and urgent
+	- [ ] learn [[#Examples for POC/MVP]]
+	- [ ] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
+- less important and urgent
+	- [ ] find resources on prompt engineering for structured output
+	- [ ] learn prompt engineering for structured output
+	- [ ] figure out a way to benchmark/compare structured output
+	- [ ] study pdf reader and find out if figures and tables can be accurately read
+- less important and not urgent
+	- [ ] learn [[#Analysis and Optimization]]
+	- [ ] learn [[#Integrations]]
