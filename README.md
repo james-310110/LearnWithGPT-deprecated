@@ -59,8 +59,8 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 - less important and not urgent
 	- [ ] learn **Analysis and Optimization**
 	- [ ] learn **Integrations**
+*see references from notes below*
 
-# ***Notes on LlamaIndex Below***
 # Starter Tutorials
 ### Set-up
 - run `conda env create -f env.yml` to install python environment and dependencies
