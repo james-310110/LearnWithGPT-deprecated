@@ -59,7 +59,10 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 - less important and not urgent
 	- [ ] learn **Analysis and Optimization**
 	- [ ] learn **Integrations**
+
 *see references from notes below*
+*notes below is copied from `LlamaIndex Notes`*
+*use obsidian or other markdown viewers for better readability*
 
 # Starter Tutorials
 ### Set-up
