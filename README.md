@@ -17,8 +17,6 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 1. after pulling from main branch, run `git checkout -b new-branch-name`
 2. to push your changes, run `git push origin <your-branch-name>`, note that  if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
 
-### Development Logs
-
 ### JavaScript Code Base
 1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
 2. Also check out open-ai's official [documentation](https://platform.openai.com/docs/api-reference/introduction) for help.
