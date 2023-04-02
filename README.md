@@ -79,7 +79,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 
 1. What is the relationship between prompt and query in LlamaIndex?
 
-```
+```quote
 In LlamaIndex, prompts are typically passed in during query-time, not during index construction. Prompts are used to provide additional context to the query and can be used to customize the query. For instance, the QuestionAnswerPrompt and RefinePrompt are used during query-time to synthesize an answer. Some indices do use prompts during index construction to build the index; for instance, GPTTreeIndex uses a SummaryPrompt to hierarchically summarize the nodes, and GPTKeywordTableIndex uses a KeywordExtractPrompt to extract keywords. The user may provide their own prompt or use the default prompts provided by LlamaIndex. Additionally, LlamaIndex also provides an Optimizers module which consists of ways for users to optimize for token usage. This module can be used to compare the outputs without optimization and with.
 ```
 

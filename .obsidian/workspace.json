@@ -13,6 +13,18 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6241cecc1a698bb8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "LlamaIndex Notes.md",
                 "mode": "source",
                 "source": false
@@ -86,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LlamaIndex Notes.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "LlamaIndex Notes.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "LlamaIndex Notes.md"
+                "file": "README.md"
               }
             }
           }
@@ -150,6 +162,8 @@
   },
   "active": "0d32515a6923af10",
   "lastOpenFiles": [
+    "LlamaIndex Notes.md",
+    "README.md",
     "server/simple_vector_index.json",
     "data/llama-index.pdf",
     "data/gpt-index-readthedocs-io-en-latest.pdf",
@@ -160,7 +174,6 @@
     "keys_and_tokens.json",
     "LlamaIndex Notes 4:1.pdf",
     "Llamaindex Notes.md",
-    "LlamaIndex Notes.md",
     "[].md",
     "customization.md"
   ]
