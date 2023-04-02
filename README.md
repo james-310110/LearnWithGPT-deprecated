@@ -1,8 +1,10 @@
 # LearnWithGPT
 
-A helpful webapp that inputs web links or local files, paired with user query, and outputs a detailed summary with structures and references.
+This repository aims at building a helpful webapp that takes web links or local files from users as inputs, to enable users to learn from the content of the input data by communicating with the augmented GPT-3 model.
 
-# On this repository
+Current progress includes a javascript youtube-summarizer and a python pdf-learner. In addition, `LlamaIndex Notes.md` is written for better understanding of [LlamaIndex](https://github.com/jerryjliu/llama_index).
+
+The next step is to explore different pipelines with loading documents, building indices and making queries. If you are interested in this project, contact me at [james.li.contact@icloud.com] or [james_li@brown.edu] for collaboration.
 
 ### To get started:
 
@@ -13,14 +15,6 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 { "openai-api-key": "<your_key_here>" }
 ```
 
-### To run youtube-summarizer(javascript):
-
-1. open terminal and go to root directory
-2. run `yarn install`
-3. run `node chatgpt.js <youtube_url>`, i.e. `node chatgpt.js https://www.youtube.com/watch?v=RYDiDpW2VkM`
-
-_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
-
 ### To run pdf-learner(python):
 
 1. open terminal and go to `server` directory
@@ -30,26 +24,18 @@ _deprecated and no longer maintained, switched to llama-index instead due to mem
 5. run `python3 build_index.py <file_name>.pdf` to build index from pdf, i.e. `python3 build_index.py llama-index.pdf`
 6. run `python3 query_index.py <file_name> "<question>"` to query index with user prompt, i.e. `python3 query_index.py llama-index "How to use llama-index to augment gpt with data from google docs?"`
 
+### To run youtube-summarizer(javascript):
+
+1. open terminal and go to root directory
+2. run `yarn install`
+3. run `node chatgpt.js <youtube_url>`, i.e. `node chatgpt.js https://www.youtube.com/watch?v=RYDiDpW2VkM`
+
+_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
+
 ### To develop:
 
 1. after pulling from main branch, run `git checkout -b new-branch-name`
 2. to push your changes, run `git push origin <your-branch-name>`, note that if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
-
-### JavaScript Code Base
-
-1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
-2. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
-3. Any single message sent to ChatGPT is capped at 6144 characters based on testing. According to [Raf](https://help.openai.com/en/articles/6787051-does-chatgpt-remember-what-happened-earlier-in-the-conversation), ChatGPT is able to reference up to 4000tokens from the current conversation.
-
-_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
-
-### JavaScript Code Workflow
-
-1. Fetch transcript from youtube url in scraper.js
-2. Prep chatgpt so that we can send multiple messages containing parts of the transcript
-3. Send transcript blocks to chatgpt
-4. Instruct chatgpt to generate a summary based on the instructed goals and formats
-5. Log the summary in console
 
 ### Python Code Base
 
@@ -87,6 +73,21 @@ _deprecated and no longer maintained, switched to llama-index instead due to mem
    - input parsing
    - output parsing
 
+### JavaScript Code Base
+
+1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
+2. Any single message sent to ChatGPT is capped at 6144 characters based on testing. According to [Raf](https://help.openai.com/en/articles/6787051-does-chatgpt-remember-what-happened-earlier-in-the-conversation), ChatGPT is able to reference up to 4000tokens from the current conversation.
+
+_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
+
+### JavaScript Code Workflow
+
+1. Fetch transcript from youtube url in scraper.js
+2. Prep chatgpt so that we can send multiple messages containing parts of the transcript
+3. Send transcript blocks to chatgpt
+4. Instruct chatgpt to generate a summary based on the instructed goals and formats
+5. Log the summary in console
+
 # Notes on the go
 
 1. What is the relationship between prompt and query in LlamaIndex?
@@ -117,7 +118,7 @@ In LlamaIndex, prompts are typically passed in during query-time, not during ind
   - [ ] learn **Integrations\*\***
 
 _see references from notes below_
-_notes below is copied from `LlamaIndex Notes`_
+_notes below are copied from `LlamaIndex Notes.md`_
 _use obsidian or other markdown viewers for better readability_
 
 # Starter Tutorials
