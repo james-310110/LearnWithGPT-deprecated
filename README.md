@@ -4,7 +4,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 # On this repository
 ### To run:
 1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
-2. create an 'openai-api-key.json' file in the root directory and paste your key in the following format
+2. create an 'keys_and_tokens.json' file in the root directory and paste your key in the following format
 ```json
 {"openai-api-key": "<your_key_here>"}
 ```

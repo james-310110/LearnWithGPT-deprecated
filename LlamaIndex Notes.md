@@ -230,13 +230,70 @@ response = index.query("<query>", response_mode="<mode>")
 
 ## Customization
 - ### [Defining LLMs](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_llms.html)
-	- TODO
-- ### [Defining Prompts](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_prompts.html)
-	- TODO
+	- `index` takes `service_context`
+	- `service_context` takes `llm_predictor` and `prompt_helper`
+	- `llm_predictor` defines LLM, i.e.
+		- model_name
+		- temperature
+		- max_token
+	- `prompt_helper` defines chat configurations, i.e.
+		- max_input_size
+		- max_output_size
+		- max_chunk_overlap
+	- example code
+		```python
+		from llama_index import (
+			GPTKeywordTableIndex, SimpleDirectoryReader,
+			LLMPredictor, PromptHelper, ServiceContext
+		)
+		from langchain import OpenAI
+		
+		documents = SimpleDirectoryReader('data').load_data()
+		
+		# define prompt helper
+		max_input_size = 4096
+		num_output = 256
+		max_chunk_overlap = 20
+		prompt_helper = PromptHelper(max_input_size, num_output, max_chunk_overlap)
+		
+		# define LLM
+		llm_predictor = LLMPredictor(
+			llm=OpenAI(
+				temperature=0, 
+				model_name="text-davinci-002", 
+				max_tokens=num_output)
+		)
+		
+		service_context = ServiceContext.from_defaults(
+			llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+		
+		# build index
+		index = GPTKeywordTableIndex.from_documents(
+			documents, service_context=service_context)
+		```
+	- define [CustomLLM](https://python.langchain.com/en/latest/modules/models/llms/examples/custom_llm.html) using langchain
+- ### [Defining Prompts](https://gpt-index.readthedocs.io/en/latest/reference/prompts.html)
+	- KeywordExtractPrompt
+	- KnowledgeGraphPrompt
+	- PandasPrompt
+	- QueryKeywordExtractPrompt
+	- QuestionAnswerPrompt
+	- RefinePrompt
+	- RefineTableContextPrompt
+	- SchemaExtractPrompt
+	- SimpleInputPrompt
+	- SummaryPrompt
+	- TableContextPrompt
+	- TextToSQLPrompt
+	- TreeInsertPrompt
+	- TreeSelectMultiplePrompt
+	- TreeSelectPrompt
 - ### [Embedding Support](https://gpt-index.readthedocs.io/en/latest/how_to/customization/embeddings.html)
 	- TODO
 - ### [Output Parsing](https://gpt-index.readthedocs.io/en/latest/how_to/output_parsing.html#langchain)
-	- TODO
+	- formatting instructions for any prompt/query (through `output_parser.format`)
+	- “parsing” for LLM outputs (through `output_parser.parse`)
+	- [example code](https://gpt-index.readthedocs.io/en/latest/how_to/output_parsing.html)
 
 ## Analysis and Optimization
 - ### [Cost Predictor](https://gpt-index.readthedocs.io/en/latest/how_to/analysis/cost_analysis.html)
@@ -278,11 +335,11 @@ response = index.query("<query>", response_mode="<mode>")
 
 # TODOs
 - more important and urgent
-	- [ ] learn [[#Customization]]
+	- [x] learn [[#Customization]]
 	- [ ] understand [vector stores](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
 - less important and urgent
 	- [ ] learn [[#Examples for POC/MVP]]
-	- [ ] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
+	- [x] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
 - less important and urgent
 	- [ ] find resources on prompt engineering for structured output
 	- [ ] learn prompt engineering for structured output

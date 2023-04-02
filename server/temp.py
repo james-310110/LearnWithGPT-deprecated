@@ -1,7 +1,7 @@
 import os
 import json
 
-with open('../openai-api-key.json', 'r') as f:
+with open('../keys_and_tokens.json', 'r') as f:
     data = json.load(f)
     openai_api_key = data.get("openai-api-key")
     if openai_api_key:

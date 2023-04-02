@@ -1,5 +1,5 @@
 import { ChatGPTAPI } from "chatgpt";
-import OPENAI_API_KEY from "./openai-api-key.json" assert { type: "json" };
+import OPENAI_API_KEY from "./keys_and_tokens.json" assert { type: "json" };
 import { getTranscriptFromYoutube } from "./scraper.js";
 
 async function initializeAPI() {

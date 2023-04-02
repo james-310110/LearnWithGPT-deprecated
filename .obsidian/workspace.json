@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Llamaindex Notes.md",
+                "file": "LlamaIndex Notes.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Llamaindex Notes.md",
+                "file": "LlamaIndex Notes.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Llamaindex Notes.md",
+                "file": "LlamaIndex Notes.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Llamaindex Notes.md"
+                "file": "LlamaIndex Notes.md"
               }
             }
           }
@@ -150,8 +150,11 @@
   },
   "active": "0d32515a6923af10",
   "lastOpenFiles": [
-    "[].md",
+    "keys_and_tokens.json",
+    "LlamaIndex Notes 4:1.pdf",
     "Llamaindex Notes.md",
+    "LlamaIndex Notes.md",
+    "[].md",
     "customization.md"
   ]
 }
