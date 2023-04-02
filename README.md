@@ -5,6 +5,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 # On this repository
 
 ### To get started:
+
 1. go to [open-ai](https://platform.openai.com/account/api-keys) to generate your own API key for free and copy it
 2. create an 'keys_and_tokens.json' file in the root directory and paste your key in the following format
 
@@ -13,12 +14,15 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 ```
 
 ### To run youtube-summarizer(javascript):
+
 1. open terminal and go to root directory
 2. run `yarn install`
 3. run `node chatgpt.js <youtube_url>`, i.e. `node chatgpt.js https://www.youtube.com/watch?v=RYDiDpW2VkM`
-   _deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
+
+_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
 
 ### To run pdf-learner(python):
+
 1. open terminal and go to `server` directory
 2. run `conda env create -f env.yml` to install python environment and dependencies
 3. run `conda activate feed-gpt` to activate python environment
@@ -26,6 +30,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 5. run `python3 query_index.py <file_name> "<question>"` to query index with user prompt, i.e. `python3 query_index.py llama-index "How to use llama-index to augment gpt with data from google docs?"`
 
 ### To develop:
+
 1. after pulling from main branch, run `git checkout -b new-branch-name`
 2. to push your changes, run `git push origin <your-branch-name>`, note that if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
 
