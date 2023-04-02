@@ -38,10 +38,10 @@ _deprecated and no longer maintained, switched to llama-index instead due to mem
 ### JavaScript Code Base
 
 1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
-2. Also check out open-ai's official [documentation](https://platform.openai.com/docs/api-reference/introduction) for help.
-3. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
-4. ChatGPT is able to reference up to 3000words/4000tokens from the current conversation, according to [Raf](https://help.openai.com/en/articles/6787051-does-chatgpt-remember-what-happened-earlier-in-the-conversation). However [u/kmdr](https://www.reddit.com/r/ChatGPT/comments/zz36n5/an_experiment_on_chatgpts_memory/) also pointed out that this cap is not strict. By reseeding basic information, ChatGPT is able to recall data 10,000 words before.
-5. Any single message sent to ChatGPT is capped at 6144characters, according to testing.
+2. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
+3. Any single message sent to ChatGPT is capped at 6144 characters based on testing. According to [Raf](https://help.openai.com/en/articles/6787051-does-chatgpt-remember-what-happened-earlier-in-the-conversation), ChatGPT is able to reference up to 4000tokens from the current conversation.
+
+_deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
 
 ### JavaScript Code Workflow
 
@@ -55,6 +55,7 @@ _deprecated and no longer maintained, switched to llama-index instead due to mem
 
 1. Currently using [LlamaIndex](https://github.com/jerryjliu/llama_index) for data augmentation
 2. Data augmentation currently in exploration, see relevant code in `server` directory
+3. Check out `LlamaIndex Notes.md` in Obsidian for conceptual understanding and examples (a copy is provided at the end of this README)
 
 ### Python Code Workflow
 
