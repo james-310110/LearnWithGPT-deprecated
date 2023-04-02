@@ -26,8 +26,9 @@ _deprecated and no longer maintained, switched to llama-index instead due to mem
 1. open terminal and go to `server` directory
 2. run `conda env create -f env.yml` to install python environment and dependencies
 3. run `conda activate feed-gpt` to activate python environment
-4. run `python3 build_index.py <file_name>.pdf` to build index from pdf, i.e. `python3 build_index.py llama-index.pdf`
-5. run `python3 query_index.py <file_name> "<question>"` to query index with user prompt, i.e. `python3 query_index.py llama-index "How to use llama-index to augment gpt with data from google docs?"`
+4. put your pdf files in `data` directory
+5. run `python3 build_index.py <file_name>.pdf` to build index from pdf, i.e. `python3 build_index.py llama-index.pdf`
+6. run `python3 query_index.py <file_name> "<question>"` to query index with user prompt, i.e. `python3 query_index.py llama-index "How to use llama-index to augment gpt with data from google docs?"`
 
 ### To develop:
 
