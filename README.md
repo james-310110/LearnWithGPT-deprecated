@@ -1,6 +1,6 @@
 # LearnWithGPT
 
-This repository aims at building a helpful webapp that takes web links or local files from users as inputs, and enable users to learn from the content of the input data by communicating with the augmented GPT-3 model.
+This repository aims at building a helpful webapp that takes web links or local files from users as inputs, and enables users to learn from the content of the input data by communicating with the augmented GPT-3 model.
 
 Current progress includes a javascript youtube-summarizer and a python pdf-learner. In addition, `LlamaIndex Notes.md` is written for better understanding of [LlamaIndex](https://github.com/jerryjliu/llama_index).
 
