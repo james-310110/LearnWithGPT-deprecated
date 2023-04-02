@@ -24,16 +24,16 @@ async function initializeAPI() {
 }
 
 async function main() {
-  // const api = await initializeAPI();
-  // const transcript = await getTranscriptFromYoutube();
-  // const resp = await api.sendMessage(
-  //   "Generate bulelted summaries with timestamps for the transcript below." +
-  //     JSON.stringify(transcript)
-  // );
-  // console.log(resp.text);
+  // parsing command line argument
+  if (process.argv.length !== 3) {
+    console.log(
+      "[Error] Incorrect Argument: input youtube url as the only argument"
+    );
+    return;
+  }
   console.time("execution time");
   const api = await initializeAPI();
-  const videoUrl = "https://www.youtube.com/watch?v=RYDiDpW2VkM";
+  const videoUrl = process.argv[2];
   const transcript = await getTranscriptFromYoutube(videoUrl);
   let instruction = await api.sendMessage(
     "Generate a bulelted list of summaries with timestamps for the transcript I'm going to send you."

@@ -162,6 +162,11 @@
   },
   "active": "0d32515a6923af10",
   "lastOpenFiles": [
+    "server/llama-index-index.json",
+    "server/simple_vector_index_from_llama-index.json",
+    "server/simple_vector_index_fromllama-index.json",
+    "server/query_index.py",
+    "server/build_index.py",
     "LlamaIndex Notes.md",
     "README.md",
     "server/simple_vector_index.json",
@@ -170,9 +175,6 @@
     "data/youtube_transcript.txt",
     "data/data.txt",
     "data",
-    "untitled folder",
-    "keys_and_tokens.json",
-    "LlamaIndex Notes 4:1.pdf",
     "Llamaindex Notes.md",
     "[].md",
     "customization.md"

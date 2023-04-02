@@ -4,7 +4,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 
 # On this repository
 
-### To run:
+### To get started:
 
 1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
 2. create an 'keys_and_tokens.json' file in the root directory and paste your key in the following format
@@ -13,11 +13,20 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 { "openai-api-key": "<your_key_here>" }
 ```
 
-3. go to root directory
-4. run `yarn install`
-5. run `node chatgpt.js`
-6. run `conda env create -f env.yml` to install python environment and dependencies
-7. run `conda activate feed-gpt` to activate python environment
+### To run youtube-summarizer(javascript):
+
+1. open terminal and go to root directory
+2. run `yarn install`
+3. run `node chatgpt.js <youtube_url>`, i.e. `node chatgpt.js https://www.youtube.com/watch?v=RYDiDpW2VkM`
+   _deprecated and no longer maintained, switched to llama-index instead due to memory limit with gpt3.5_
+
+### To run pdf-learner(python):
+
+1. open terminal and go to `server` directory
+2. run `conda env create -f env.yml` to install python environment and dependencies
+3. run `conda activate feed-gpt` to activate python environment
+4. run `python3 build_index.py <file_name>.pdf` to build index from pdf, i.e. `python3 build_index.py llama-index.pdf`
+5. run `python3 query_index.py <file_name> "<question>"` to query index with user prompt, i.e. `python3 query_index.py llama-index "How to use llama-index to augment gpt with data from google docs?"`
 
 ### To develop:
 
