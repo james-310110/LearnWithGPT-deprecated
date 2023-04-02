@@ -48,9 +48,40 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 ### Python Code Workflow
 
 1. loading documents
+   - comparing different connectors:
+     - pdfs
+     - htmls
+     - github repo
+     - webpage endpoints
+   - dividing documents into chunks/nodes
 2. building indices
+   - comparing different indices:
+     - simple vector index
+     - list index
+     - vector store index
+     - tree index
+     - keyword table index
+     - graph index
+   - comparing service contexts(llm_predictor and prompt_helper)
 3. making queries
+   - comparing parameters
+     - mode
+     - response_mode
+     - required_keywords and exclude_keywords
+   - comparing queries to different indices
+   - comparing query transformations
+   - comparing [prompts](https://gpt-index.readthedocs.io/en/latest/reference/prompts.html)
 4. pipeline -> interface [streamlit](https://streamlit.io/)
+   - input parsing
+   - output parsing
+
+# Notes on the go
+
+1. What is the relationship between prompt and query in LlamaIndex?
+
+```
+In LlamaIndex, prompts are typically passed in during query-time, not during index construction. Prompts are used to provide additional context to the query and can be used to customize the query. For instance, the QuestionAnswerPrompt and RefinePrompt are used during query-time to synthesize an answer. Some indices do use prompts during index construction to build the index; for instance, GPTTreeIndex uses a SummaryPrompt to hierarchically summarize the nodes, and GPTKeywordTableIndex uses a KeywordExtractPrompt to extract keywords. The user may provide their own prompt or use the default prompts provided by LlamaIndex. Additionally, LlamaIndex also provides an Optimizers module which consists of ways for users to optimize for token usage. This module can be used to compare the outputs without optimization and with.
+```
 
 # TODOs
 
@@ -205,6 +236,7 @@ response = index.query("<query>", response_mode="<mode>")
     ```
 
     - [customizing LLMs](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_llms.html)
+
       ```python
       from llama_index import LLMPredictor # defining llm
       llm_predictor = LLMPredictor(llm=OpenAI(temperature=0,
@@ -227,6 +259,9 @@ response = index.query("<query>", response_mode="<mode>")
       ```
 
       ```
+
+      ```
+
     - [customizing prompts](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_prompts.html)
     - [customizing embeddings](https://gpt-index.readthedocs.io/en/latest/how_to/customization/embeddings.html#custom-embeddings)
 
@@ -267,6 +302,7 @@ response = index.query("<query>", response_mode="<mode>")
     ```
 
 - ### [Query Transformation](https://gpt-index.readthedocs.io/en/latest/how_to/query/query_transformations.html)
+
   - HypotheticalDocumentEmbedding
     - [conceptual explaination](http://boston.lti.cs.cmu.edu/luyug/HyDE/HyDE.pdf)
     - [notebook example](https://github.com/jerryjliu/llama_index/blob/main/examples/query_transformations/HyDEQueryTransformDemo.ipynb)
@@ -332,6 +368,7 @@ response = index.query("<query>", response_mode="<mode>")
 ## Customization
 
 - ### [Defining LLMs](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_llms.html)
+
   - `index` takes `service_context`
   - `service_context` takes `llm_predictor` and `prompt_helper`
   - `llm_predictor` defines LLM, i.e.
@@ -376,6 +413,7 @@ response = index.query("<query>", response_mode="<mode>")
     ```
 
   - define [CustomLLM](https://python.langchain.com/en/latest/modules/models/llms/examples/custom_llm.html) using langchain
+
 - ### [Defining Prompts](https://gpt-index.readthedocs.io/en/latest/reference/prompts.html)
   - KeywordExtractPrompt
   - KnowledgeGraphPrompt

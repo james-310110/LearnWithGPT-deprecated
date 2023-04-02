@@ -43,3 +43,7 @@ def query_simple_vector_index(prompt, response_mode):
 # query_simple_vector_index("List every non-recursive mode when querying an index and explain when to use each of them.",
 #                           "default")
 # evaluation: still ignored other response modes, a bit too concise and not detailed enough
+
+# try-out
+# query_simple_vector_index("What is the relationship between prompt and query in LlamaIndex? Explain in detials",
+#                           "default")
