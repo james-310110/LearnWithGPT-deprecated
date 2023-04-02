@@ -4,7 +4,7 @@ This repository aims at building a helpful webapp that takes web links or local 
 
 Current progress includes a javascript youtube-summarizer and a python pdf-learner. In addition, `LlamaIndex Notes.md` is written for better understanding of [LlamaIndex](https://github.com/jerryjliu/llama_index).
 
-The next step is to explore different pipelines with loading documents, building indices and making queries. If you are interested in this project, contact me at [james.li.contact@icloud.com] or [james_li@brown.edu] for collaboration.
+The next step is to explore different pipelines with loading documents, building indices and making queries. If you are interested in this project, contact me at my [personal](james.li.contact@icloud.com) or [work](james_li@brown.edu) email for collaboration.
 
 ### To get started:
 
