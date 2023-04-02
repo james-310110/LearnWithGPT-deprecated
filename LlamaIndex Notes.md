@@ -1,3 +1,24 @@
+# TODOs
+- more important and urgent
+	- [x] build POC to learn documentation
+	- [x] learn [[#Customization]]
+	- [ ] understand [vector stores](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
+- less important and urgent
+	- [x] learn [[#Examples for POC/MVP]]
+	- [x] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
+- less important and urgent
+	- [ ] collect more prompts to compare and evaluate results
+	- [ ] build and compare more indices
+	- [ ] figure out how to load documents from web url (get all endpoints from a basepoint)
+	- [ ] build and compare indices built from graphs and non-graphs
+	- [ ] find resources on prompt engineering for structured output
+	- [ ] learn prompt engineering for structured output
+	- [ ] figure out a way to benchmark/compare structured output
+	- [ ] study pdf reader and find out if figures and tables can be accurately read
+- less important and not urgent
+	- [ ] learn [[#Analysis and Optimization]]
+	- [ ] learn [[#Integrations]]
+
 # Starter Tutorials
 ### Set-up
 - run `conda env create -f env.yml` to install python environment and dependencies
@@ -332,19 +353,3 @@ response = index.query("<query>", response_mode="<mode>")
 - [How to augment with SEC Filings](https://medium.com/@jerryjliu98/how-unstructured-and-llamaindex-can-help-bring-the-power-of-llms-to-your-own-data-3657d063e30d)https://medium.com/@jerryjliu98/how-unstructured-and-llamaindex-can-help-bring-the-power-of-llms-to-your-own-data-3657d063e30d
 - [**Example Notebooks**](https://github.com/jerryjliu/llama_index/tree/main/examples)
 - [**Example WebApps**](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html)
-
-# TODOs
-- more important and urgent
-	- [x] learn [[#Customization]]
-	- [ ] understand [vector stores](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
-- less important and urgent
-	- [ ] learn [[#Examples for POC/MVP]]
-	- [x] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
-- less important and urgent
-	- [ ] find resources on prompt engineering for structured output
-	- [ ] learn prompt engineering for structured output
-	- [ ] figure out a way to benchmark/compare structured output
-	- [ ] study pdf reader and find out if figures and tables can be accurately read
-- less important and not urgent
-	- [ ] learn [[#Analysis and Optimization]]
-	- [ ] learn [[#Integrations]]

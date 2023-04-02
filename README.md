@@ -1,23 +1,31 @@
 # LearnWithGPT
+
 A helpful webapp that inputs web links or local files, paired with user query, and outputs a detailed summary with structures and references.
 
 # On this repository
+
 ### To run:
+
 1. go to [open-ai](https://platform.openai.com/account/api-keys) to find your own key and copy it
 2. create an 'keys_and_tokens.json' file in the root directory and paste your key in the following format
+
 ```json
-{"openai-api-key": "<your_key_here>"}
+{ "openai-api-key": "<your_key_here>" }
 ```
+
 3. go to root directory
 4. run `yarn install`
 5. run `node chatgpt.js`
 6. run `conda env create -f env.yml` to install python environment and dependencies
+7. run `conda activate feed-gpt` to activate python environment
 
 ### To develop:
+
 1. after pulling from main branch, run `git checkout -b new-branch-name`
-2. to push your changes, run `git push origin <your-branch-name>`, note that  if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
+2. to push your changes, run `git push origin <your-branch-name>`, note that if it's your first time pushing to your branch, you may need to run `git push --set-upstream origin <your-branch-name>` instead.
 
 ### JavaScript Code Base
+
 1. Currently using an open-source [chatgpt](https://github.com/transitive-bullshit/chatgpt-api) library to interact with openai
 2. Also check out open-ai's official [documentation](https://platform.openai.com/docs/api-reference/introduction) for help.
 3. See how to change completionParameters at open-ai's [playground](https://platform.openai.com/playground?mode=chat)
@@ -25,6 +33,7 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 5. Any single message sent to ChatGPT is capped at 6144characters, according to testing.
 
 ### JavaScript Code Workflow
+
 1. Fetch transcript from youtube url in scraper.js
 2. Prep chatgpt so that we can send multiple messages containing parts of the transcript
 3. Send transcript blocks to chatgpt
@@ -32,10 +41,12 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 5. Log the summary in console
 
 ### Python Code Base
+
 1. Currently using [LlamaIndex](https://github.com/jerryjliu/llama_index) for data augmentation
 2. Data augmentation currently in exploration, see relevant code in `server` directory
 
 ### Python Code Workflow
+
 1. parse user input files or links into data loaders
 2. dependent on user input, build list index, tree index, or graph index
 3. dependent on user input, build HyDE, single-step or multi-step query
@@ -44,23 +55,29 @@ A helpful webapp that inputs web links or local files, paired with user query, a
 
 # TODOs
 - more important and urgent
-	- [ ] learn **Customization**
-	- [ ] understand [**vector stores**](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
+  - [x] build POC to learn documentation
+	- [x] learn **Customization**
+	- [ ] understand [vector stores](https://gpt-index.readthedocs.io/en/latest/how_to/integrations/vector_stores.html)
 - less important and urgent
-	- [ ] learn **Examples for POC/MVP**
-	- [ ] checkout existing [**webapps**](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
+	- [x] learn **Examples for POC/MVP**
+	- [x] checkout existing [webapps](https://gpt-index.readthedocs.io/en/latest/gallery/app_showcase.html) for reference
 - less important and urgent
-	- [ ] find resources on **prompt engineering** for structured output
-	- [ ] learn **prompt engineering** for structured output
-	- [ ] figure out a way to **benchmark/compare** structured output
-	- [ ] study **pdf reader** and find out if figures and tables can be accurately read
+	- [ ] collect more prompts to compare and evaluate results
+	- [ ] build and compare more indices
+	- [ ] figure out how to load documents from web url (get all endpoints from a basepoint)
+	- [ ] build and compare indices built from graphs and non-graphs
+	- [ ] find resources on prompt engineering for structured output
+	- [ ] learn prompt engineering for structured output
+	- [ ] figure out a way to benchmark/compare structured output
+	- [ ] study pdf reader and find out if figures and tables can be accurately read
 - less important and not urgent
 	- [ ] learn **Analysis and Optimization**
-	- [ ] learn **Integrations**
+	- [ ] learn **Integrations****
 
-*see references from notes below*
-*notes below is copied from `LlamaIndex Notes`*
-*use obsidian or other markdown viewers for better readability*
+
+_see references from notes below_
+_notes below is copied from `LlamaIndex Notes`_
+_use obsidian or other markdown viewers for better readability_
 
 # Starter Tutorials
 ### Set-up
@@ -294,13 +311,70 @@ response = index.query("<query>", response_mode="<mode>")
 
 ## Customization
 - ### [Defining LLMs](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_llms.html)
-	- TODO
-- ### [Defining Prompts](https://gpt-index.readthedocs.io/en/latest/how_to/customization/custom_prompts.html)
-	- TODO
+	- `index` takes `service_context`
+	- `service_context` takes `llm_predictor` and `prompt_helper`
+	- `llm_predictor` defines LLM, i.e.
+		- model_name
+		- temperature
+		- max_token
+	- `prompt_helper` defines chat configurations, i.e.
+		- max_input_size
+		- max_output_size
+		- max_chunk_overlap
+	- example code
+		```python
+		from llama_index import (
+			GPTKeywordTableIndex, SimpleDirectoryReader,
+			LLMPredictor, PromptHelper, ServiceContext
+		)
+		from langchain import OpenAI
+		
+		documents = SimpleDirectoryReader('data').load_data()
+		
+		# define prompt helper
+		max_input_size = 4096
+		num_output = 256
+		max_chunk_overlap = 20
+		prompt_helper = PromptHelper(max_input_size, num_output, max_chunk_overlap)
+		
+		# define LLM
+		llm_predictor = LLMPredictor(
+			llm=OpenAI(
+				temperature=0, 
+				model_name="text-davinci-002", 
+				max_tokens=num_output)
+		)
+		
+		service_context = ServiceContext.from_defaults(
+			llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+		
+		# build index
+		index = GPTKeywordTableIndex.from_documents(
+			documents, service_context=service_context)
+		```
+	- define [CustomLLM](https://python.langchain.com/en/latest/modules/models/llms/examples/custom_llm.html) using langchain
+- ### [Defining Prompts](https://gpt-index.readthedocs.io/en/latest/reference/prompts.html)
+	- KeywordExtractPrompt
+	- KnowledgeGraphPrompt
+	- PandasPrompt
+	- QueryKeywordExtractPrompt
+	- QuestionAnswerPrompt
+	- RefinePrompt
+	- RefineTableContextPrompt
+	- SchemaExtractPrompt
+	- SimpleInputPrompt
+	- SummaryPrompt
+	- TableContextPrompt
+	- TextToSQLPrompt
+	- TreeInsertPrompt
+	- TreeSelectMultiplePrompt
+	- TreeSelectPrompt
 - ### [Embedding Support](https://gpt-index.readthedocs.io/en/latest/how_to/customization/embeddings.html)
 	- TODO
 - ### [Output Parsing](https://gpt-index.readthedocs.io/en/latest/how_to/output_parsing.html#langchain)
-	- TODO
+	- formatting instructions for any prompt/query (through `output_parser.format`)
+	- “parsing” for LLM outputs (through `output_parser.parse`)
+	- [example code](https://gpt-index.readthedocs.io/en/latest/how_to/output_parsing.html)
 
 ## Analysis and Optimization
 - ### [Cost Predictor](https://gpt-index.readthedocs.io/en/latest/how_to/analysis/cost_analysis.html)
