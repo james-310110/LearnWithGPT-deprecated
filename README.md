@@ -15,6 +15,14 @@ The next step is to explore different pipelines with loading documents, building
 { "openai-api-key": "<your_key_here>" }
 ```
 
+### To run url-learner-demo(streamlit-python):
+
+1. open terminal and go to `server` directory
+2. run `conda create --name llama_index python=3.11`
+3. run `pip install -r requirements.tx`t`
+4. run `conda activate llama-index`
+5. run `streamlit run streamlit-demo.py`
+
 ### To run pdf-learner(python):
 
 1. open terminal and go to `server` directory
